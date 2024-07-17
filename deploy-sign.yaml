@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myhomegym-sign-web
+  labels:
+    app: myhomegym-sign
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myhomegym-sign
+  template:
+    metadata:
+      labels:
+        app: myhomegym-sign
+    spec:
+      containers:
+      - image: ysryu/nginx-sign:v1.0
+        name: web-sign
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "250Mi"
+          limits:
+            memory: "250Mi"
+            cpu: "250m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-sign-web
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30200
+  selector:
+    app: myhomegym-sign
