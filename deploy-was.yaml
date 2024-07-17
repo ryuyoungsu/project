@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: was
-        image: kku9/nginx-was:v1.0
+        image: ysryu/tomcat:v9.0.90
         ports:
         - containerPort: 8080
         resources:
