@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+piVersion: apps/v1
 kind: Deployment
 metadata:
   name: myhomegym-login-web
@@ -15,7 +15,7 @@ spec:
         app: myhomegym-login
     spec:
       containers:
-      - image: kku9/nginx-login-web:v1.0
+      - image: ysryu/nginx:v9.0.90
         name: web
         ports:
         - containerPort: 80
